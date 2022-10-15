@@ -16,10 +16,11 @@ public class Pizza {
 
 
     public Pizza(Boolean isVeg){
+        this.isVeg = isVeg;
         this.isCheeseAdded = false;
         this.isToppingAdded=false;
         this.isTakeAwayAdded = false;
-        this.isVeg = isVeg;
+
 
         this.extraCheesePrice =80;
         this.takeAwayPrice =20;
@@ -43,20 +44,21 @@ public class Pizza {
 
     public void addExtraCheese(){
        if(isCheeseAdded == false){
+           this.bill = this.bill +"Extra Cheese Added: "+ this.extraCheesePrice + "\n";
            this.price = this.price +  this.extraCheesePrice;
            isCheeseAdded = true;
        }
     }
-
     public void addExtraToppings(){
            if (isToppingAdded == false){
+               this.bill = this.bill + "Extra Toppings Added: " + this.extraToppingsPrice +"\n";
                this.price =this.price + this.extraToppingsPrice;
                isToppingAdded = true;
            }
     }
-
     public void addTakeaway(){
         if(isTakeAwayAdded == false){
+            this.bill = this.bill +"Paperbag Added: "+ this.takeAwayPrice + "\n";
             this.price =this.price + this.takeAwayPrice;
             isTakeAwayAdded = true;
         }
@@ -64,18 +66,7 @@ public class Pizza {
 
     public String getBill(){
         if(isBillGenerated == false){
-
             isBillGenerated = true;
-
-            if(isCheeseAdded == true){
-                this.bill = this.bill +"Extra Cheese Added: "+ this.extraCheesePrice + "\n";
-            }
-            if(isToppingAdded ==  true){
-                this.bill = this.bill + "Extra Toppings Added: " + this.extraToppingsPrice +"\n";
-            }
-            if(isTakeAwayAdded == true){
-                this.bill = this.bill +"Paperbag Added: "+ this.takeAwayPrice + "\n";
-            }
             this.bill = this.bill + "Total Price: " + this.price + "\n";
         }
         return this.bill;
